@@ -3,7 +3,8 @@ import BasicTables from "./components/BasicTables";
 const App = () => {
   return (
     <div>
-      <BasicTables/>
+      <h1>Hello YC's</h1>
+      <BasicTables />
     </div>
   );
 };
