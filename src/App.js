@@ -11,8 +11,8 @@ const App = () => {
       {/*<SortingTables/>*/}
       {/*<GlobalFiltering/>*/}
       <ColumnFiltering/>
-    </div>
-  );
-};
-
+      </div>
+      );
+    };
+    
 export default App;

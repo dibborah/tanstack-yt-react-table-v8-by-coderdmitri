@@ -102,3 +102,30 @@ export const columnDefWithGrouping = [
 //         header: 'Date'
 //     }
 // ]
+
+
+// columnDef for filter
+
+export const columnDefWithFilter = [
+  columnHelper.accessor("id", {
+    header: "ID",
+    enableColumnFilter: false,
+  }),
+  {
+    accessorFn: (row) => `${row.first_name}`,
+    header: "First Name",
+    enableGlobalFilter: true,
+  },
+  {
+    accessorKey: "last_name",
+    header: "Last Name",
+    enableColumnFilter: true,
+  },
+  columnHelper.accessor("email", {
+    header: "Email",
+  }),
+  columnHelper.accessor("Date", {
+    header: "Date",
+    enableColumnFilter: true,   
+  }),
+];
