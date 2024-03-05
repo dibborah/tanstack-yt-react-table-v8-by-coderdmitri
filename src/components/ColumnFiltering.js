@@ -2,20 +2,28 @@ import {
   flexRender,
   useReactTable,
   getCoreRowModel,
+  getFilteredRowModel,
 } from "@tanstack/react-table";
 import { columnDef } from "./columns";
 import "./tables.css";
 import React from "react";
 import dataJSON from "./data.json";
+import FilterFunction from "./FilterFunction";
 
-const BasicTables = () => { 
+const BasicTables = () => {
   const finalData = React.useMemo(() => dataJSON, []);
   const finalColumnDef = React.useMemo(() => columnDef, []);
+  const [columnFilter, setColumnFilter] = React.useState("");
 
   const tableInstance = useReactTable({
     columns: finalColumnDef,
     data: finalData,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      columnFilters: columnFilter,
+    },
+    onColumnFiltersChange: setColumnFilter,
   });
   // console.log("test body row", tableInstance.getRowModel().rows);
   return (
@@ -27,12 +35,15 @@ const BasicTables = () => {
               {headerEl.headers.map((columnEl) => {
                 return (
                   <th key={columnEl.id} colSpan={columnEl.colSpan}>
-                    {columnEl.isPlaceholder
-                      ? null
-                      : flexRender(
+                    {columnEl.isPlaceholder ? null : (
+                      <span>
+                        {flexRender(
                           columnEl.column.columnDef.header,
                           columnEl.getContext()
                         )}
+                        <div><FilterFunction column={columnEl.column} table={tableInstance}/></div>
+                      </span>
+                    )}
                   </th>
                 );
               })}
