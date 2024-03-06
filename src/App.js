@@ -2,6 +2,7 @@ import BasicTables from "./components/BasicTable";
 import SortingTables from "./components/SortingTable";
 import GlobalFiltering from "./components/GlobalFiltering";
 import ColumnFiltering from "./components/ColumnFiltering";
+import PaginationTable from "./components/PaginationTable";
 
 const App = () => {
   return (
@@ -10,7 +11,8 @@ const App = () => {
       {/*<BasicTables />*/}
       {/*<SortingTables/>*/}
       {/*<GlobalFiltering/>*/}
-      <ColumnFiltering/>
+      {/*<ColumnFiltering/>*/}
+      <PaginationTable/>
       </div>
       );
     };
